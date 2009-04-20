@@ -1,0 +1,162 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/**
+ * Headings
+ */
+h1 {
+	margin-bottom: .5em;
+}
+
+h2 {
+	clear: both;
+	margin-top: .8em;
+	margin-bottom: .4em;
+	font-variant: small-caps;
+}
+
+h3 {
+	margin: .5em 1em .4em 1em;
+}
+
+
+/**
+ * General text decoration
+ */
+p {
+	margin: .4em 0;
+	/* text-align: justify; */
+}
+
+hr {
+	width: 80%;
+	margin: 2em auto;
+	border-style: solid;
+	border-width: 1px 0 0 0;
+}
+
+p, ul, dl {
+	line-height: 1.4;
+}
+
+
+/**
+ * Lists
+ */
+ul {
+	margin: .2em 2em;
+	list-style: square;
+}
+
+li {
+	margin: .2em 0;
+}
+
+dl {
+	margin: .2em 2em;
+	overflow-y: auto;
+}
+
+
+dt {
+	float: left;
+	clear: left;
+	width: 25%;
+	color: #666666;
+	font-weight: bold;
+}
+
+dd {
+	float: left;
+	width: 70%;
+	margin-left: 1em;
+}
+
+
+/**
+ * Project list
+ */
+ul.projects li {
+	margin-bottom: 1em;
+}
+
+ul.projects .title {
+	font-weight: bold;
+}
+
+ul.projects .summary {}
+ul.projects .summary:before { content: ' — '; }
+ul.projects dt { width: 15%; }
+ul.projects dd { width: 80%; }
+ul.projects .description {}
+ul.projects .role {}
+ul.projects .software {}
+
+
+#language {
+	float: right;
+	font-size: small;
+	text-transform: uppercase;
+}
+
+#language a {
+	padding: .1em .2em;
+}
+
+.tel {
+	white-space: nowrap;
+}
+
+
+/**
+ * Screen specific
+ */
+@media screen {
+	body {
+		min-width: 600px;
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 1em 4em;
+	}
+}
+
+
+/**
+ * Print specific
+ */
+@media print {
+	@page { size: portrait; }
+
+	html, body { margin: 0 !important; }
+
+	body {
+		font-family: Palatino Linotype, Sylfaen, sans-serif;
+	}
+
+	h1, h2, h3, h4, h5, h6 { page-break-after: avoid; }
+	p { page-break-inside: avoid; }
+
+	li:first-of-type, dt:first-of-type, dd:first-of-type { page-break-after: avoid; }
+	ul.quals li, ul.projects li { page-break-inside: avoid; }
+
+	a {
+		border-bottom: 1px dashed;
+		text-decoration: none;
+	}
+
+	#qualification a, #skills a {
+		color: inherit !important;
+		border-bottom: inherit !important;
+	}
+
+	acronym, abbr {
+		border: none;
+	}
+
+
+	#language {
+		display: none;
+	}
+}
