@@ -80,19 +80,30 @@ dd {
  */
 ul.projects li {
 	margin-bottom: 1em;
+	list-style: none;
 }
 
-ul.projects .title {
+.projects .title {
 	font-weight: bold;
 }
 
-ul.projects .summary {}
-ul.projects .summary:before { content: ' — '; }
-ul.projects dt { width: 15%; }
-ul.projects dd { width: 80%; }
-ul.projects .description {}
-ul.projects .role {}
-ul.projects .software {}
+.projects dt { width: 15%; }
+.projects dd { width: 80%; }
+
+.projects .summary {}
+.projects .summary:before { content: ' — '; }
+
+.projects .description {}
+.projects .role {}
+.projects .software {}
+
+
+/**
+ * Reference list
+ */
+ul.references {
+	display: none;
+}
 
 
 #language {
