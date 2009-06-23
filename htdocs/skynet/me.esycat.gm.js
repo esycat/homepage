@@ -7,7 +7,7 @@ me.esycat.gm.getConsole = function() {
 me.esycat.gm.consoleMethod = function consoleMethod(fn) {
 	var console = this.getConsole();
 	var args = Array.prototype.slice.call(arguments, 1);
-	return console[fn].apply(console, args);
+	return (console[fn]) ? console[fn].apply(console, args) : null;
 };
 
 me.esycat.gm.log  = me.esycat.gm.consoleMethod.curry('log');
