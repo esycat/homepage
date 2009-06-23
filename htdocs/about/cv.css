@@ -3,6 +3,7 @@
 	padding: 0;
 }
 
+
 /**
  * Headings
  */
@@ -138,7 +139,14 @@ ul.references {
  * Print specific
  */
 @media print {
-	@page { size: portrait; }
+	@page {
+		size: portrait;
+
+		@bottom-right {
+			content: "Page " counter(page);
+		}
+
+	}
 
 	html, body { margin: 0 !important; }
 
@@ -162,6 +170,10 @@ ul.references {
 		border-bottom: inherit !important;
 	}
 
+	.experience a[href^="http"]:after {
+		content: " (" attr(href) ")";
+	}
+
 	acronym, abbr {
 		border: none;
 	}
@@ -171,3 +183,4 @@ ul.references {
 		display: none;
 	}
 }
+
