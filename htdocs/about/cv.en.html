@@ -18,13 +18,13 @@
 			var pageTracker = _gat._getTracker("UA-121822-3");
 			pageTracker._trackPageview();
 		}
-		catch(err) {}
+		catch(exception) {}
 	-->
 	</script>
 </head>
 
 <body class="hresume">
-	<div id="language">
+	<div id="language" class="hidden">
 		<a href="cv.ru.html" hreflang="ru" title="Russian" rel="translation">ru</a>
 	</div>
 
@@ -217,14 +217,17 @@
 		<div><span class="dtstart">August&nbsp;2009</span>&nbsp;&mdash; <span class="dtend">March&nbsp;2010</span></div>
 
 		<p>WBA&nbsp;is a&nbsp;major Australian wireless broadband telecommunication company that is&nbsp;represented by&nbsp;<a href="http://unwired.com.au/">Unwired</a> and&nbsp;<a href="http://vividwireless.com.au/">Vividwireless</a> brands.</p>
-		<p>I was&nbsp;primarily focused on&nbsp;the development of&nbsp;a&nbsp;new backend systems for&nbsp;Vividwireless project which should&nbsp;be&nbsp;launched in&nbsp;March&nbsp;2010.</p>
+		<p>I&nbsp;have been primarily focused on&nbsp;design and&nbsp;development of&nbsp;the&nbsp;new backend systems for&nbsp;Vividwireless project.</p>
 
 		<p>My&nbsp;main responsibilities and&nbsp;accomplishments were:</p>
 
 		<ul>
-			<li>Introduced new modern PHP and&nbsp;Java technologies in&nbsp;the&nbsp;company and&nbsp;promoted best practices of&nbsp;their use in&nbsp;the&nbsp;development team;</li>
-			<li>Participated in domain models designing and&nbsp;reviewed development of&nbsp;several key systems for&nbsp;Vividwireless project. Proposed and&nbsp;implemented a&nbsp;multitude of&nbsp;significant improvements;</li>
-			<li>Developed a&nbsp;framework and&nbsp;its modules for&nbsp;customer service back-office.</li>
+			<li>Introduced Doctrine and&nbsp;Symfony frameworks to&nbsp;development team;</li>
+			<li>Analysed and&nbsp;refined domain object model and&nbsp;database schema;</li>
+			<li>Reviewed development of&nbsp;several key systems, proposed and&nbsp;implemented a&nbsp;multitude of&nbsp;interoperability improvements;</li>
+			<li>Designed and&nbsp;implemented a&nbsp;framework and&nbsp;its modules for&nbsp;Customer Service's back-office;</li>
+			<li>Coached developers in OOP,&nbsp;ORM,&nbsp;SOAP,&nbsp;UMS, and&nbsp;MVC best practices;</li>
+			<li>Provided suggestions for&nbsp;further system development and&nbsp;enhancement.</li>
 		</ul>
 	</div>
 
@@ -406,13 +409,11 @@
 	</div>
 
 	<!--
-	<h2>Publications</h2>
+	<h2 id="publications" class="hidden">Publications</h2>
 	-->
 
 	<!--
-	<h2 id="references">References</h2>
-
-	<p>References are available upon request.</p>
+	<h2 id="references" class="hidden">References</h2>
 
 	<ul class="references">
 		<li><span class="">Simon Beaumont</span>, <span class="">Software Architect</span> at&nbsp;<span class=""><a href="http://vividwireless.com.au/">Vividwireless</a> &amp; <a href="http://unwired.com.au/">Unwired</a></span></li>
@@ -422,9 +423,9 @@
 	-->
 
 	<!--
-	<h2 id="certificates">Certificates</h2>
+	<h2 id="certificates" class="hidden">Certificates</h2>
 
-	<ul>
+	<ul class="hidden">
 		<li>
 			<a href="http://sun.com/training/certification/java/">Sun Certified</a>
 			<ul>

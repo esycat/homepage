@@ -122,6 +122,13 @@ ul.references {
 }
 
 
+.hidden {
+	display: none;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+
 /**
  * Screen specific
  */
