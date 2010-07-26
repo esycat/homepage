@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+
+#content ul.networks li {
+	padding: .4em;
+	list-style: none;
+}

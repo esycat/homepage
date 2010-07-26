@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: "Lucida Grande", Cardana, Verdana, sans-serif;
+}
+
+h1, h2 {
+	-moz-transform: rotate(-1deg);
+	-webkit-transform: rotate(-1deg);
+}
