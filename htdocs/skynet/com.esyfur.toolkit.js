@@ -1,12 +1,12 @@
-me = {};
-me.esycat = {};
+net = {};
+net.esycat = {};
 
-me.esycat.toolkit = {};
+net.esycat.toolkit = {};
 
 /**
  * Fake console, intended to pretend FireBug's console
  */
-me.esycat.toolkit.fakeConsole = {
+net.esycat.toolkit.fakeConsole = {
 	log:  function log() {},
 	info: function info() {},
 	warn: function warn() {}
