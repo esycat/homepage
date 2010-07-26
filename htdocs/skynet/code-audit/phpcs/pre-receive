@@ -1,0 +1,54 @@
+#!/bin/sh
+#
+# PHP CodeSniffer pre-reveive hook for git
+#
+# @author Eugene Janusov <esycat@gmail.com>
+#
+# Partially inspired by pre-commit hook
+# by Soenke Ruempler <soenke@ruempler.eu>
+#
+# see the README
+
+PHPCS_BIN="/usr/bin/phpcs"
+PHPCS_CODING_STANDARD="Eugene"
+PHPCS_IGNORE=""
+
+# read config
+CONFIG_FILE=$(dirname $0)/phpcs.conf
+if [ -e $CONFIG_FILE ]; then
+    . $CONFIG_FILE
+fi
+
+# simple check if code sniffer is set up correctly
+#if [ ! -x $PHPCS_BIN ]; then
+#    echo "PHP CodeSniffer binary is not found or executable: $PHPCS_BIN"
+#    exit 1
+#fi
+
+REVIEW_CMD="$PHPCS_BIN -s --standard=$PHPCS_CODING_STANDARD"
+if [ "$PHPCS_IGNORE" != "" ]; then
+    REVIEW_CMD="$REVIEW_CMD --ignore=$PHPCS_IGNORE"
+fi
+
+while read oldrev newrev ref
+do
+    valid=true
+    for path in `git diff-tree -r $oldrev..$newrev | awk '{print $6}' | egrep "$PHPCS_FILE_PATTERN"`
+    do
+        OUTPUT=$(git show "$newrev:$path" | php -l 2>&1 1>/dev/null)
+        RETVAL=$?
+
+        if [ $RETVAL -ne 0 ]; then
+            echo "Auto-review on $path failed:"
+            echo "$OUTPUT"
+            valid=false
+        fi
+    done
+done
+
+if [ "$valid" != "true" ] ; then
+    exit 1
+fi
+
+exit
+

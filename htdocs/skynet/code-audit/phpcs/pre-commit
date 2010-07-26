@@ -1,0 +1,45 @@
+#!/bin/bash
+# PHP CodeSniffer pre-commit hook for git
+#
+# @author Soenke Ruempler <soenke@ruempler.eu>
+#
+# see the README
+
+PHPCS_BIN=/usr/bin/phpcs
+PHPCS_CODING_STANDARD="Eugene"
+PHPCS_IGNORE=""
+
+# parse config
+CONFIG_FILE=$(dirname $0)/phpcs.conf
+if [ -e $CONFIG_FILE ]; then
+    . $CONFIG_FILE
+fi
+
+# simple check if code sniffer is set up correctly
+if [ ! -x $PHPCS_BIN ]; then
+    echo "PHP CodeSniffer binary is not found or executable: $PHPCS_BIN"
+    exit 1
+fi
+
+REVIEW_CMD="$PHPCS_BIN -s --standard=$PHPCS_CODING_STANDARD"
+if [ "$PHPCS_IGNORE" != "" ]; then
+    REVIEW_CMD="$REVIEW_CMD --ignore=$PHPCS_IGNORE"
+fi
+
+# this is the magic: 
+# retrieve all files in staging area that are added, modified or renamed
+# but no deletions etc
+FILES_CHANGED=$(git diff-index --name-only --cached --diff-filter=ACMR `git rev-parse --default master --verify HEAD | egrep -q "$PHPCS_FILE_PATTERN"` -- )
+
+for file in "$FILES_CHANGED"; do
+    OUTPUT=$($REVIEW_CMD $IGNORE $FILES_TO_CHECK)
+    RETVAL=$?
+done
+
+
+if [ "$valid" != "true" ] ; then
+    exit 1
+fi
+
+exit
+
