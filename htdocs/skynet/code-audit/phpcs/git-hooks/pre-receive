@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+# PHP CodeSniffer pre-reveive hook for git
+#
+# @author Eugene Janusov <esycat@gmail.com>
+#
+# Partially inspired by pre-commit hook
+# by Soenke Ruempler <soenke@ruempler.eu>
+#
+
+COLOR_YELLOW="\e[33m"
+COLOR_RESET="\e[0m"
+
+# Read config
+CONFIG_FILE=$(dirname $0)/code-audit.conf
+if [ ! -f "$CONFIG_FILE" ] ; then
+    echo "Config file not found."
+    exit 1
+fi
+
+. $CONFIG_FILE
+. $(dirname $0)/phpcs-prepare
+
+LINT_RETVAL=0
+PHPCS_RETVAL=0
+
+while read oldrev newrev ref ; do
+    FILES_CHANGED=$(git diff-tree -r $oldrev..$newrev | awk '{print $6}' | egrep "$PHP_LINT_PATTERN" -- )
+
+    for filepath in $FILES_CHANGED ; do
+	    tempfile=$(mktemp -t 'codeaudit.XXXXXXXX')
+
+        # PHP Lint
+        OUTPUT=$(git show "$newrev:$filepath" | $PHP_BIN -l 2>&1 1>/dev/null)
+        RETVAL=$?
+        if [ $RETVAL -ne 0 ] ; then
+            echo "PHP Lint failed on \`${filepath}'."
+            #echo "$OUTPUT"
+            LINT_RETVAL=1
+        fi
+
+        # PHP CodeSniffer
+        git show "$newrev:$filepath" > "$tempfile"
+        OUTPUT=$($REVIEW_CMD $tempfile)
+        RETVAL=$?
+        if [ $RETVAL -ne 0 ] ; then
+            echo "PHP CodeSniffer failed on \`$filepath'."
+            #echo "$OUTPUT"
+            PHPCS_RETVAL=1
+        fi
+		rm "$tempfile"
+    done
+done
+
+if [ $LINT_RETVAL -ne 0 ] || [ $PHPCS_RETVAL -ne 0 ] ; then
+    exit 1
+fi
+
+exit
+
