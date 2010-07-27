@@ -1,0 +1,11 @@
+# Check that CodeSniffer is set up correctly
+if [ ! -f $PHPCS_BIN ]; then
+    echo "PHP CodeSniffer binary is not found or executable: $PHPCS_BIN"
+    exit 1
+fi
+
+# Assemble complete command
+REVIEW_CMD="$PHPCS_BIN --standard=$PHPCS_CODING_STANDARD --extensions=$PHPCS_EXTENSIONS $PHPCS_OPTIONS"
+if [ "$PHPCS_IGNORE" != "" ]; then
+    REVIEW_CMD="$REVIEW_CMD --ignore=$PHPCS_IGNORE"
+fi

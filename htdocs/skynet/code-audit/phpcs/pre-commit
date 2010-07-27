@@ -1,44 +1,44 @@
 #!/bin/bash
+#
 # PHP CodeSniffer pre-commit hook for git
 #
-# @author Soenke Ruempler <soenke@ruempler.eu>
+# @author Eugene Janusov <esycat@gmail.com>
 #
-# see the README
+# Partially inspired by pre-commit hook
+# by Soenke Ruempler <soenke@ruempler.eu>
+#
 
-PHPCS_BIN=/usr/bin/phpcs
-PHPCS_CODING_STANDARD="Eugene"
-PHPCS_IGNORE=""
-
-# parse config
-CONFIG_FILE=$(dirname $0)/phpcs.conf
-if [ -e $CONFIG_FILE ]; then
-    . $CONFIG_FILE
-fi
-
-# simple check if code sniffer is set up correctly
-if [ ! -x $PHPCS_BIN ]; then
-    echo "PHP CodeSniffer binary is not found or executable: $PHPCS_BIN"
+# Read config
+CONFIG_FILE=$(dirname $0)/code-audit.conf
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Config file not found."
     exit 1
 fi
 
-REVIEW_CMD="$PHPCS_BIN -s --standard=$PHPCS_CODING_STANDARD"
-if [ "$PHPCS_IGNORE" != "" ]; then
-    REVIEW_CMD="$REVIEW_CMD --ignore=$PHPCS_IGNORE"
-fi
+. $CONFIG_FILE
+. $(dirname $0)/phpcs-prepare
 
-# this is the magic: 
-# retrieve all files in staging area that are added, modified or renamed
-# but no deletions etc
-FILES_CHANGED=$(git diff-index --name-only --cached --diff-filter=ACMR `git rev-parse --default master --verify HEAD | egrep -q "$PHPCS_FILE_PATTERN"` -- )
+# Retrieve a list of files in staging area that have been added,
+# modified or renamed, but no deletions
+FILES_CHANGED=$(git diff-index --name-only --cached --diff-filter=ACMR `git rev-parse --default master --verify HEAD` -- )
 
-for file in "$FILES_CHANGED"; do
-    OUTPUT=$($REVIEW_CMD $IGNORE $FILES_TO_CHECK)
+LINT_RETVAL=0
+
+for filepath in $FILES_CHANGED; do
+    OUTPUT=$($PHP_BIN -l $filepath 2>&1 1>/dev/null)
     RETVAL=$?
+
+    if [ $RETVAL -ne 0 ]; then
+        echo "$OUTPUT"
+        LINT_RETVAL=1
+    fi
 done
 
+$REVIEW_CMD $FILES_CHANGED
+PHPCS_RETVAL=$?
 
-if [ "$valid" != "true" ] ; then
-    exit 1
+if [ $LINT_RETVAL -ne 0 ] || [ $PHPCS_RETVAL -ne 0 ]; then
+	exit 1
 fi
 
 exit

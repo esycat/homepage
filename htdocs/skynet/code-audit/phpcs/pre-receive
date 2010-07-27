@@ -7,46 +7,35 @@
 # Partially inspired by pre-commit hook
 # by Soenke Ruempler <soenke@ruempler.eu>
 #
-# see the README
 
-PHPCS_BIN="/usr/bin/phpcs"
-PHPCS_CODING_STANDARD="Eugene"
-PHPCS_IGNORE=""
-
-# read config
-CONFIG_FILE=$(dirname $0)/phpcs.conf
-if [ -e $CONFIG_FILE ]; then
-    . $CONFIG_FILE
+# Read config
+CONFIG_FILE=$(dirname $0)/code-audit.conf
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Config file not found."
+    exit 1
 fi
 
-# simple check if code sniffer is set up correctly
-#if [ ! -x $PHPCS_BIN ]; then
-#    echo "PHP CodeSniffer binary is not found or executable: $PHPCS_BIN"
-#    exit 1
-#fi
+. $CONFIG_FILE
+. $(dirname $0)/phpcs-prepare
 
-REVIEW_CMD="$PHPCS_BIN -s --standard=$PHPCS_CODING_STANDARD"
-if [ "$PHPCS_IGNORE" != "" ]; then
-    REVIEW_CMD="$REVIEW_CMD --ignore=$PHPCS_IGNORE"
-fi
+LINT_RETVAL=1
 
-while read oldrev newrev ref
-do
-    valid=true
-    for path in `git diff-tree -r $oldrev..$newrev | awk '{print $6}' | egrep "$PHPCS_FILE_PATTERN"`
-    do
-        OUTPUT=$(git show "$newrev:$path" | php -l 2>&1 1>/dev/null)
+while read oldrev newrev ref; do
+    FILES_CHANGED=$(git diff-tree -r $oldrev..$newrev | awk '{print $6}' | egrep "$PHPCS_FILE_PATTERN")
+
+    for filepath in `git diff-tree -r $oldrev..$newrev | awk '{print $6}' | egrep "$PHPCS_FILE_PATTERN"`; do
+        OUTPUT=$(git show "$newrev:$filepath" | $PHP_BIN -l 2>&1 1>/dev/null)
         RETVAL=$?
 
         if [ $RETVAL -ne 0 ]; then
-            echo "Auto-review on $path failed:"
+            echo "Auto-review on $filepath failed:"
             echo "$OUTPUT"
-            valid=false
+			LINT_RETVAL=1
         fi
     done
 done
 
-if [ "$valid" != "true" ] ; then
+if [ $LINT_RETVAL -ne 0 ] ; then
     exit 1
 fi
 
