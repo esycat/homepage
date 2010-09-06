@@ -1,0 +1,58 @@
+body {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+p {
+  text-align: justify;
+  text-height: 50%;
+}
+
+ul {list-style-type: square;}
+
+body, p, a, b, i, u, td, center, em, h7 {
+  font-family: Verdana, Tahoma, Microsoft Sans Serif, sans-serif;
+  font-size: 9pt;
+}
+
+form, textarea, input {
+  font-family: Verdana, Tahoma, Microsoft Sans Serif, sans-serif;
+  font-size: 12px;
+}
+
+hr {color: #0000a0;}
+
+.t1 {
+  font-family: Microsoft Sans Serif, MS Sans Serif, Verdana, Tahoma, sans-serif;
+  font-size: 10pt;
+  font-weight: bold;
+  text-align: center;
+  color: #0000a0;
+}
+.t2 {
+  font-family: Comic Sans MS, fantasy;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+}
+
+#r {text-indent: 15pt;}
+#i {color: #333300;}
+
+.mtitle {
+  font-family: Tahoma, Verdana, Microsoft Sans Serif, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  text-indent: 5px;
+  color: #2e8b57;
+}
+
+.ep {
+  font-style: italic;
+  text-align: right;
+}
+
+a:link {color: #0000cd; text-decoration: none;}
+a:hover {color: #5533b8; text-decoration: underline;}
+a:visited {color: #000080; text-decoration: none;}
+a:active {color: #ff8000; text-decoration: none;}

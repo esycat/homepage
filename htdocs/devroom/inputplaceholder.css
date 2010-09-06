@@ -1,0 +1,37 @@
+form {
+  margin: 0;
+}
+
+fieldset {
+  margin: .4em .2em;
+  padding: .4em;
+}
+
+label {
+  display: block;
+  float: left;
+  width: 140px;
+  padding: .2em .4em;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* ќформление пол€ ввода в нормальном состо€нии. */
+input, textarea, select {
+  background-color: white;
+  color: black;
+}
+
+input.text, textarea {
+  width: 40%;
+}
+
+/* ќформление заменител€. */
+input.placeholder,
+textarea.placeholder {
+  color: gray;
+}
+
+button {
+  margin: 0 2px;
+}

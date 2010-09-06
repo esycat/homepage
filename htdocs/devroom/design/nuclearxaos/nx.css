@@ -1,0 +1,23 @@
+<style type="text/css">
+<!--
+
+p,td,tr,div,small,default,body,font.one,font.two,A:link,A:visited,A:active,A:hover {font-family: "arial", arial, helvetica;}
+
+small {font-size: 11px}
+.x-small {font-size: 11px; color:#49FF1C;}
+.x-gray {font-size: 11px; color:gray;}
+.small {font-size: 10pt; color:#49FF1C;}
+default {font-size: 13px; color: white}
+body {font-size: 13px; color: white}
+.one {margin-left: 7px; font-size: 10pt; color: white; font-weight: bold}
+.header {font-weight: bold; font-size: 10pt; color: #FF8000}
+.gray {color: gray}
+.news {font-size: 10pt;text-align: justify; color: rgb(240,240,240); margin-left: 0; margin-right: 0;}
+.left {font-size: 10pt;text-align: left; color: rgb(240,240,240); margin-left: 0; margin-right: 0;}
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: underline; color: rgb(73,255,28)}
+A:hover {text-decoration: underline; color: rgb(73,255,28)}
+.form {font-size: 11px;}
+
+--></style>
