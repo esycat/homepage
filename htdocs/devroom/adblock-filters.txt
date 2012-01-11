@@ -150,3 +150,5 @@ http://www.zdorovie-tv.ru/fotos/*
 http://www2.auto.lbn.ru/*
 http://yabs.yandex.ru/*
 http://zuni.tyndex.ru/*
+http://au.iprofile.org##DIV[id="adholder"]
+http://lenta.ru##IFRAME[id="b240"]
