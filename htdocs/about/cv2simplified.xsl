@@ -44,6 +44,7 @@
 	<xsl:template match="script" />
 	<xsl:template match="comment()" />
 	<xsl:template match="body/hr" />
-	<xsl:template match="*[@class='hidden']" />
+	<xsl:template match="*[contains(@class, 'hidden')]" />
+	<xsl:template match="*[contains(@class, 'non-printable')]" />
 
 </xsl:stylesheet>
