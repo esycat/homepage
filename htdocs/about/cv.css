@@ -137,6 +137,9 @@ ul.references {
 	text-transform: uppercase;
 }
 
+#fullVersion {
+	text-align: center;
+}
 
 .tel,
 span.nowrap {
@@ -160,6 +163,10 @@ span.nowrap {
 		max-width: 1000px;
 		margin: 0 auto;
 		padding: 1em 4em;
+	}
+
+	.printonly {
+		display: none;
 	}
 }
 
@@ -207,7 +214,6 @@ span.nowrap {
 	acronym, abbr {
 		border: none;
 	}
-
 
 	.non-printable {
 		display: none;
