@@ -1,21 +1,19 @@
 @CHARSET "UTF-8";
 
-* {
-	margin: 0;
-	padding: 0;
-}
+@import url('../commons/layout.css');
 
 html, body {
 	background-color: white;
 }
 
-body {
-	max-width: 960px;
-	margin: auto;
+header {
 }
 
-#header {}
+article {
+}
 
-#content {}
+section {
+}
 
-#footer {}
+footer {
+}

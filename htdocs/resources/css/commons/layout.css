@@ -1,0 +1,26 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body, header, footer, article {
+	box-sizing: border-box;
+}
+
+/**
+ * Screen specific
+ */
+@media screen {
+
+	body {
+		min-width: 600px;
+		max-width: 1000px;
+		margin: auto;
+		padding: 1em 4em;
+	}
+
+	.printonly {
+		display: none;
+	}
+
+}

@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-#content ul.networks li {
+article ul li {
 	padding: .4em;
 	list-style: none;
 }

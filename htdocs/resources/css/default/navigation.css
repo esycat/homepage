@@ -1,19 +1,20 @@
 @CHARSET "UTF-8";
 
-#navigation {
+nav {
+	display: none;
 	clear: both;
 	margin-top: 40px;
 	overflow: hidden;
 	background: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#e6e6e6), color-stop(0.5, #f5f5f5), color-stop(0.5, Gainsboro));
 }
 
-#navigation li {
+nav li {
 	float: left;
 	margin: 5px 10px;
 	list-style: none;
 }
 
-#navigation li a {
+nav li > a {
 	display: block;
 	border: 1px solid silver;
 	border-radius: 50%;

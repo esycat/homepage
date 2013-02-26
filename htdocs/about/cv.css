@@ -1,48 +1,6 @@
-* {
-	margin: 0;
-	padding: 0;
-}
-
-
-/**
- * Headings
- */
-h1 {
-	margin-top: 0;
-	margin-bottom: .5em;
-}
-
-h2 {
-	clear: both;
-	margin-top: .8em;
-	margin-bottom: .4em;
-	font-variant: small-caps;
-}
-
-h3 {
-	margin: .5em 1em .4em 1em;
-}
-
-
-/**
- * General text decoration
- */
-p {
-	margin: .4em 0;
-	/* text-align: justify; */
-}
-
-hr {
-	width: 80%;
-	margin: 2em auto;
-	border-style: solid;
-	border-width: 1px 0 0 0;
-}
-
-p, ul, dl {
-	line-height: 1.4;
-}
-
+@import url('../resources/css/commons/layout.css');
+@import url('../resources/css/commons/text.css');
+@import url('../resources/css/commons/misc.css');
 
 /**
  * Lists
@@ -140,36 +98,6 @@ ul.references {
 #fullVersion {
 	text-align: center;
 }
-
-.tel,
-span.nowrap {
-	white-space: nowrap;
-}
-
-
-.hidden {
-	display: none;
-	overflow: hidden;
-	visibility: hidden;
-}
-
-
-/**
- * Screen specific
- */
-@media screen {
-	body {
-		min-width: 600px;
-		max-width: 1000px;
-		margin: 0 auto;
-		padding: 1em 4em;
-	}
-
-	.printonly {
-		display: none;
-	}
-}
-
 
 /**
  * Print specific
