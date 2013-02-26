@@ -1,4 +1,15 @@
-/htdocs/about/eugene.janusov.resume.*
+.gradle/
+.idea/
+.settings/
 .project
-*.swp
+.classpath
+.buildpath
 
+/build/*
+/bin/*
+/out/*
+/target/*
+
+*.iml
+*.ipr
+*.iws
