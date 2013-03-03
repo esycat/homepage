@@ -31,7 +31,7 @@
 	</xsl:template>
 
 	<!-- Custom rules -->
-	<xsl:template match="body/dl/dd/ul[@class='inline']">
+	<xsl:template match="ul[@class='inline']">
 		<xsl:for-each select="li">
 			<xsl:apply-templates />
 			<xsl:if test="position() != last()">
