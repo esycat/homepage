@@ -1,0 +1,24 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'com.esyfur', name: 'gradle-expand-props', version: '0.1.23'
+    }
+}
+
+apply plugin: 'expandProps'
+
+ext {
+}
+
+task ('build-resume', type: Exec) {
+    workingDir 'htdocs/about'
+    executable 'xsltproc'
+    args([
+        '--html', '--novalid',
+        "-o", "${resume.outputFile}.html",
+        "cv.${resume.stylesheet}.xsl",
+        "cv.${resume.lang}.html"
+    ])
+}

@@ -36,19 +36,24 @@ dl {
 	overflow-y: auto;
 }
 
+dt, dd {
+	box-sizing: border-box;
+}
+
 
 dt {
-	float: left;
+	display: inline-block;
 	clear: left;
 	width: 25%;
 	color: #666666;
 	font-weight: bold;
+	vertical-align: top;
 }
 
 dd {
-	float: left;
-	width: 70%;
-	margin-left: 1em;
+	display: inline-block;
+	width: 73%;
+	margin-left: 1%;
 }
 
 
@@ -65,8 +70,8 @@ ul.projects li {
 	font-weight: bold;
 }
 
-.projects dt { width: 15%; }
-.projects dd { width: 80%; }
+.projects dt { width: 20%; }
+.projects dd { width: 78%; }
 
 .projects .summary {}
 .projects .summary:before { content: ' — '; }
@@ -119,7 +124,7 @@ ul.references {
 	p { page-break-inside: avoid; }
 
 	li:first-of-type, dt:first-of-type, dd:first-of-type { page-break-after: avoid; }
-	ul.quals li, ul.projects li { page-break-inside: avoid; }
+	#qualifications ul li, ul.projects li { page-break-inside: avoid; }
 
 	a {
 		border-bottom: 1px dashed;
@@ -136,7 +141,8 @@ ul.references {
 	*/
 
 	.experience a[href^="http"]:after {
-		content: " (" attr(href) ")";
+		content: "(" attr(href) ")";
+		margin-left: .5em;
 	}
 
 	acronym, abbr {
