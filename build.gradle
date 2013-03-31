@@ -1,15 +1,25 @@
+description = "Persic Entertainment"
+group = 'com.esyfur'
+version = '5.0.1'
+defaultTasks 'build'
+
 buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'com.esyfur', name: 'gradle-expand-props', version: '0.1.23'
+        classpath group: 'com.esyfur', name: 'gradle-expand-props', version: ext.get('plugin.util.version')
     }
 }
 
 apply plugin: 'expandProps'
+apply from: 'project/minify.gradle'
 
 ext {
+}
+
+task build {
+    dependsOn 'build-resume', 'compile-css'
 }
 
 task ('build-resume', type: Exec) {
