@@ -153,3 +153,7 @@ http://yabs.yandex.ru/*
 http://zuni.tyndex.ru/*
 http://au.iprofile.org##DIV[id="adholder"]
 http://lenta.ru##IFRAME[id="b240"]
+www.opennet.ru##OBJECT[data*="click.opennet.ru"]
+www.opennet.ru##DIV[id="adv"]
+www.opennet.ru##DIV[id="adv3"]
+*##IFRAME[class="twitter-timeline"]
