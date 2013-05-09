@@ -1,6 +1,7 @@
 description = "Persic Entertainment"
 group = 'com.esyfur'
 version = '5.0.1'
+
 defaultTasks 'build'
 
 buildscript {
@@ -8,11 +9,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'com.esyfur', name: 'gradle-expand-props', version: ext.get('plugin.util.version')
+        classpath group: 'com.esyfur', name: 'gradle-expand-props', version: project.ext.get('plugin.propsUtil.version')
     }
 }
 
-apply plugin: 'expandProps'
+apply plugin: 'propsUtil'
+
+apply from: 'project/util.gradle'
 apply from: 'project/minify.gradle'
 
 ext {
