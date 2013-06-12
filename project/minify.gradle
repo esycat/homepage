@@ -11,8 +11,12 @@ buildscript {
     }
 }
 
-apply plugin: 'js'
-apply plugin: 'css'
+//apply plugin: 'js'
+//apply plugin: 'css'
+
+// @see http://forums.gradle.org/gradle/topics/applying_plugin_in_apply_from_file
+apply plugin: com.eriwen.gradle.js.JsPlugin
+apply plugin: com.eriwen.gradle.css.CssPlugin
 
 // Declare JavaScript sources
 javascript.source {
