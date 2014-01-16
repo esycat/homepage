@@ -1,6 +1,6 @@
 description = "Persic Entertainment"
 group = 'com.esyfur'
-version = '5.0.1'
+version = '5.0.2'
 
 defaultTasks 'build'
 
@@ -9,11 +9,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'com.esyfur', name: 'gradle-expand-props', version: project.ext.get('plugin.propsUtil.version')
+        classpath group: 'com.esyfur', name: 'gradle-config-plugin', version: project.ext.get('plugin.config.version')
     }
 }
 
-apply plugin: 'propsUtil'
+apply plugin: 'config'
 
 apply from: 'project/util.gradle'
 apply from: 'project/minify.gradle'
@@ -30,8 +30,8 @@ task ('build-resume', type: Exec) {
     executable 'xsltproc'
     args([
         '--html', '--novalid',
-        "-o", "${resume.outputFile}.html",
-        "cv.${resume.stylesheet}.xsl",
-        "cv.${resume.lang}.html"
+        "-o", "${config.resume.outputFile}.html",
+        "cv.${config.resume.stylesheet}.xsl",
+        "cv.${config.resume.lang}.html"
     ])
 }
