@@ -4,3 +4,26 @@ article ul li {
 	padding: .4em;
 	list-style: none;
 }
+
+ul.icons {
+}
+
+ul.icons li {
+    display: inline-block;
+    padding: 0;
+    margin: 2px;
+}
+
+ul.icons li a {
+    display: inline-block;
+    padding: 1em 2em;
+    border-radius: 5px;
+    background-color: LightSeaGreen;
+    color: white !important;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+ul.icons li a:hover {
+    background-color: SteelBlue;
+}

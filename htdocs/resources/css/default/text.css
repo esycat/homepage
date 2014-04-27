@@ -3,7 +3,7 @@
 @import url('../commons/text.css');
 
 body {
-	font-family: "Lucida Grande", Cardana, Ubuntu, Verdana, sans-serif;
+	font-family: Ubuntu, "Lucida Grande", Cardana, Verdana, sans-serif;
 }
 
 h1, h2 {

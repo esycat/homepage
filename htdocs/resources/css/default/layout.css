@@ -7,13 +7,20 @@ html, body {
 }
 
 header {
+    margin-bottom: 40px;
 }
 
 article {
 }
 
 section {
+    margin-top: 40px;
+}
+
+section:first-child {
+    margin-top: 0;
 }
 
 footer {
+    margin-top: 40px;
 }
