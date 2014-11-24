@@ -1,6 +1,6 @@
 description = "Persic Entertainment"
 group = 'com.esyfur'
-version = '5.0.2'
+version = '5.0.3'
 
 defaultTasks 'build'
 
@@ -24,15 +24,28 @@ ext {
 task build {
     dependsOn 'build-resume', 'css-compile'
 }
+
+task ('build-resume') {
+    dependsOn 'build-resume-pdf', 'build-resume-simplified'
 }
 
-task ('build-resume', type: Exec) {
-    workingDir 'htdocs/about'
+task ('build-resume-pdf', type: Exec) {
+    ext.source = "cv.${config.resume.lang}.html"
+
+    workingDir config.resume.dir
+    executable 'wkhtmltopdf'
+    args([ext.source, 'eugene.janusov.resume.pdf'])
+}
+
+task ('build-resume-simplified', type: Exec) {
+    ext.source = "cv.${config.resume.lang}.html"
+
+    workingDir config.resume.dir
     executable 'xsltproc'
     args([
         '--html', '--novalid',
         "-o", "${config.resume.outputFile}.html",
         "cv.${config.resume.stylesheet}.xsl",
-        "cv.${config.resume.lang}.html"
+        ext.source
     ])
 }
