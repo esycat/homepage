@@ -1,9 +1,3 @@
-description = "Persic Entertainment"
-group = 'com.esyfur'
-version = '5.0.3'
-
-defaultTasks 'build'
-
 buildscript {
     repositories {
         mavenCentral()
@@ -12,6 +6,21 @@ buildscript {
         classpath group: 'com.esyfur', name: 'gradle-config-plugin', version: project.ext.get('plugin.config.version')
     }
 }
+
+/*
+plugins {
+    id 'com.eriwen.gradle.js'  version '1.12.1'
+    id 'com.eriwen.gradle.css' version '1.11.1'
+    // id 'com.eriwen.gradle.js'  version project.ext.get('plugin.js.version')
+    // id 'com.eriwen.gradle.css' version project.ext.get('plugin.css.version')
+}
+*/
+
+description = 'Persic Entertainment'
+group = 'com.esyfur'
+version = '5.0.3'
+
+defaultTasks 'build'
 
 apply plugin: 'config'
 
@@ -34,7 +43,7 @@ task ('build-resume-pdf', type: Exec) {
 
     workingDir config.resume.dir
     executable 'wkhtmltopdf'
-    args([ext.source, 'eugene.janusov.resume.pdf'])
+    args([ext.source, "${config.resume.outputFile}.pdf"])
 }
 
 task ('build-resume-simplified', type: Exec) {

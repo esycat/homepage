@@ -20,6 +20,11 @@ buildscript {
 apply plugin: JsPlugin
 apply plugin: CssPlugin
 
+/*
+apply plugin: 'com.eriwen.gradle.js'
+apply plugin: 'com.eriwen.gradle.css'
+*/
+
 // The CSS plugin adds Maven Central to the project's repositories.
 // See https://github.com/eriwen/gradle-css-plugin/issues/29
 // A temporary workaround to overcome this issue:
