@@ -22,7 +22,8 @@ ext {
 }
 
 task build {
-    dependsOn 'build-resume', 'compile-css'
+    dependsOn 'build-resume', 'css-compile'
+}
 }
 
 task ('build-resume', type: Exec) {
